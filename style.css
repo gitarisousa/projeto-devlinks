@@ -1,0 +1,257 @@
+/* GOOGLE FONTS - NOME: INTER  REGULAR 400 E MEDIUM 500 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+
+/* RESET  */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+
+html  {
+    font-size: 62.5%;
+
+}
+
+
+
+:root {
+    --text-color:white;
+    --bg-url: url(./assets/bg-mobile.jpg);
+    --stroke-color:rgba(255, 255, 255, 0.5);
+    --surface-color: rgba(0, 0, 0, 0.02);
+    --surface-color-hover:rgba(255, 255, 255, 0.5);
+    --highlight-color: rgba(255, 255, 255, 0.2);
+    --switch-bg-url: url(./assets/moon-stars.svg);
+
+
+}
+
+.light {
+    --text-color:black;
+    --bg-url: url(./assets/bg-mobile-light.jpg);
+    --stroke-color:rgba(0, 0, 0, 0.5);
+    --surface-color: rgba(0, 0, 0, 0.05);
+    --surface-color-hover: rgba(0, 0, 0, 0.09);
+    --highlight-color: rgba(0, 0, 0, 0.1);   
+    --switch-bg-url: url(./assets/sun.svg);
+
+ 
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: 'Inter', sans-serif;
+    color:var(--text-color);
+    background: black var(--bg-url) no-repeat top center/cover;
+    height: 100vh;
+}
+
+/* CONTAINER DIV */
+
+#container {
+    width: 100%;
+    max-width: 588px;
+    margin: 5.6rem auto 0px;
+    padding: 0 2.4rem;
+}
+
+
+/* SEÇÃO PROFILE */
+
+/* DEVIDO A IMAGEM SER UM ELEMENTO INLINE PODEMOS USAR TEXT ALIGN Na DIV PAI */
+#profile {
+    text-align: center;
+    padding: 2.4rem;
+}
+
+#profile img {
+    width: 112px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+
+}
+
+#profile p {
+    font-weight: 500;
+    line-height: 2.4rem;
+    margin-top: 0.8rem;
+}
+
+/* SEÇÃO BOTÃO SWITCHER - TROCAR TEMAS */
+
+
+
+#switch {
+    position: relative;
+    width: 6.4rem;
+    margin: 0.4rem auto;
+}
+
+
+/* Toogle */
+#switch button {
+    width: 3.2rem;
+    height: 3.2rem;
+    background: white var(--switch-bg-url) no-repeat center;
+    border: 0;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 1;
+    transform:translateY(-50%);
+    cursor: pointer;
+    animation: slide-back 0.5s;
+
+    
+}
+
+.light #switch button {
+   animation: slide-in 0.4s forwards;
+
+}
+
+
+/* EFEITO HOVER PARA O TOGGLE */
+#switch button:hover {
+    outline: 8px solid var(--highlight-color); 
+}
+
+
+
+/* Tracker */
+
+
+#switch span {
+    display: block;
+    width: 6.4rem;
+    height: 2.4rem;
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 9999px;
+    cursor: pointer;
+
+
+}
+
+/* SEÇÃO DOS LINKS */
+
+ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    padding: 2rem 0;
+}
+
+ul li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.6rem 2.4rem;
+    text-decoration: none;
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background 0.2s;
+
+    /*   
+    EFEITO DE EMBAÇAMENTO 
+    DEVE SER INSERIDO O WEBKIT PARA FUNCIONAR EM TODOS OS BROWSERS    
+    */
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px );  
+}
+
+
+/* PSEUDO SELECTOR PARA O EFEITO DE HOVER QUANDO PASSAR O MOUSE EM CIMA */
+
+ul li a:hover {
+    background: var(--surface-color-hover);
+    border: 1.5px solid var(--text-color);
+}
+
+/* PSEUDO SELECTOR PARA DEIXAR O LINK DA MESMA COR QUANDO JÁ FOI VISITADO*/
+
+a { 
+    color: var(--text-color);
+}
+
+a:visited {
+    color: var(--text-color);
+}
+
+
+/*  SOCIAL LINKS  */
+
+#social-links {
+    display:flex;
+    padding: 2.4rem 0;
+    font-size: 2.4rem;
+    justify-content: center;
+
+}
+
+#social-links a {
+    display: flex;   
+    align-items: center;
+    justify-content: center;
+    padding: 1.6rem;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+#social-links a:hover {
+    background: var(--highlight-color);
+   
+
+}
+
+
+footer {
+    padding: 2.4rem 0;
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+
+/* RESPONSIVIDADE */
+
+/*Telas acima de 700px de largura as regras abaixo serão aplicadas.*/
+@media (min-width:700px) {
+    :root {
+        --bg-url: url(./assets/bg-desktop.jpg);
+    }
+
+    .light {
+        --bg-url: url(./assets/bg-desktop-light.jpg);
+    }
+
+}
+
+
+/* ANIMAÇÃO PARA TOGGLE DESLIGAR SUAVEMENTE */
+@keyframes slide-in {
+    from {
+        left:0;
+    }
+    to {
+        left: 50%;
+    }
+}
+
+@keyframes slide-back {
+    from {
+        left:50%;
+    }
+    to {
+        left: 0;
+    }
+}
